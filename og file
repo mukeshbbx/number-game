@@ -1,0 +1,45 @@
+package com.company;
+import java.util.Random;
+import java.util.Scanner;
+class game{
+    int random;   //generating random no
+    int userip;      // generating user ip
+    int guess = 0;    /// no of guess
+
+    game(){
+        Random r = new Random();
+        random = r.nextInt(100);
+    }
+    void uip() {
+        System.out.print("guess the no:-");
+        Scanner sc= new Scanner(System.in);
+        userip = sc.nextInt();
+       // this.uip = uip;
+    }
+    boolean correctno(){
+        guess++;
+        System.out.format("you no of guess is %d ",guess);
+        if(random==userip){
+            System.out.format("your guessed no %d and random no %d are equal ",userip,random);
+            return true;
+        }
+        else if(random<userip){
+            System.out.println("your guessed no is too high..!!");
+        }
+        else if(random>userip){
+            System.out.println("your guessed no is too low..!!");
+        }
+        return false;
+    }
+}
+public class oops_ex {
+    public static void main(String[] args) {
+        game g= new game();
+        boolean b= false;
+        while (!b) {
+            g.uip();
+            b = g.correctno();
+            System.out.println(b);
+        }
+    }
+}
